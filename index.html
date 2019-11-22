@@ -23,12 +23,17 @@
       <label :for="country">{{country}} &nbsp;&nbsp;&nbsp;</label>
     </span>
     <p>Click on the animation to play / pause.</p>
+
+    <h1>Average CO2 Emissions Per Person Per Day</h1>
+
   </div>
 
   <!-- Vue components for p5 sketches, also bound to data -->
   <p5 src="./sketch.js" :data="selectedCountries" :restart="restart"></p5>
 
   <button class="button" @click="restart = !restart;">Restart Animation</button>
+
+  <p><a href="https://ourworldindata.org/grapher/co-emissions-per-capita">Data source</a></p>
 </div>
 
 <script src="vue-definitions.js"></script>
