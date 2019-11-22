@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Load in libraries here -->
+  <link href="https://fonts.googleapis.com/css?family=Open Sans" rel="stylesheet">
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+
+<div id="root" class="container"> <!-- Vue can only access things contained within this div -->
+
+  <div>
+    <h2>CO2 Balloons</h2>
+    <p>First choose your countries. When you're done, click on the animation below to play / pause.</p>
+    <span v-for="country in countries" class="select">
+      <input type="checkbox" :id="country" :value="country" v-model="selectedCountries">
+      <label :for="country">{{country}} &nbsp;&nbsp;&nbsp;</label>
+    </span>
+    <p>Click on animation to play / pause.</p>
+  </div>
+
+  <!-- Vue components for p5 sketches, also bound to data -->
+  <p5 src="./sketch.js" :data="selectedCountries" :restart="restart"></p5>
+
+  <button @click="restart = !restart;">Restart Animation</button>
+</div>
+
+<script src="vue-definitions.js"></script>
+
+</body>
+</html>
