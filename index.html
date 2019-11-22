@@ -17,18 +17,18 @@
 
   <div>
     <h2>CO2 Balloons</h2>
-    <p>First choose your countries. When you're done, click on the animation below to play / pause.</p>
+    <p>First choose your countries. When you're done, scroll down.</p>
     <span v-for="country in countries" class="select">
       <input type="checkbox" :id="country" :value="country" v-model="selectedCountries">
       <label :for="country">{{country}} &nbsp;&nbsp;&nbsp;</label>
     </span>
-    <p>Click on animation to play / pause.</p>
+    <p>Click on the animation to play / pause.</p>
   </div>
 
   <!-- Vue components for p5 sketches, also bound to data -->
   <p5 src="./sketch.js" :data="selectedCountries" :restart="restart"></p5>
 
-  <button @click="restart = !restart;">Restart Animation</button>
+  <button class="button" @click="restart = !restart;">Restart Animation</button>
 </div>
 
 <script src="vue-definitions.js"></script>

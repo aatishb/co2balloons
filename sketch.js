@@ -21,7 +21,7 @@ function sketch(parent) {
   }
 
   p.setup = function() {
-    let canvas = p.createCanvas(700, 500);
+    let canvas = p.createCanvas(1200, 700);
     canvas.parent(parent.$el);
 
     p.frameRate(10);
@@ -51,8 +51,8 @@ function sketch(parent) {
     size = p.width/countries.length;
     fontSize = p.min(0.2 * size, 40);
 
-    dudeHeight = 0.2 * dude.height;
-    dudeWidth = 0.2 * dude.width;
+    dudeHeight = 0.34 * dude.height;
+    dudeWidth = 0.34 * dude.width;
 
     // say dude's height is 1.778 meters (5'10"). it's also dudeHeight pixels
     // so conversion from meters to pixels = dudeHeight / 1.778
@@ -65,10 +65,12 @@ function sketch(parent) {
       if (restart !== parent.restart) {
         year = 1800;
         restart = parent.restart;
+        paused = true;
       }
 
       if (countries !== parent.data) {
         year = 1800;
+        paused = true;
         countries = parent.data;
 
         countries = countries.sort((a,b) => data[a][2017] > data[b][2017]);
@@ -76,8 +78,8 @@ function sketch(parent) {
         size = p.width/countries.length;
         fontSize = p.min(0.2 * size, 40);
 
-        dudeHeight = 0.2 * dude.height;
-        dudeWidth = 0.2 * dude.width;
+        dudeHeight = 0.34 * dude.height;
+        dudeWidth = 0.34 * dude.width;
 
         // say dude's height is 1.778 meters (5'10"). it's also dudeHeight pixels
         // so conversion from meters to pixels = dudeHeight / 1.778
@@ -140,6 +142,7 @@ function sketch(parent) {
   }
 
   p.mouseClicked = function() {
+    if (p.mouseX > 0 && p.mouseX < p.width && p.mouseY > 0 && p.mouseY < p.height)
     paused = !paused;
   }
 
